@@ -32,4 +32,18 @@ public class JUnitTest {
         assertEquals(expectedBalance, customer.getBalance());
     }
 
+    @Test
+    public void testToString() {
+        // Create a customer object
+        Customer customer = new Customer();
+        customer.setId(1);
+        customer.setName("Example Company");
+        
+        // Calculate the expected string representation
+        String expectedString = "Customer ID: 1, Name: Example Company, Balance: 0";
+        
+        // Verify that the toString() method returns the expected string
+        assertEquals(expectedString, customer.toString());
+    }
+
 }
