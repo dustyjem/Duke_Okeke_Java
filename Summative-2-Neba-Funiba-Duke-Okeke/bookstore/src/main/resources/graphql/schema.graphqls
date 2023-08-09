@@ -1,0 +1,61 @@
+type Book {
+    id: ID!
+    isbn: String!
+    publishDate: String!
+    author: Author
+    title: String!
+    publisher: Publisher
+    price: Float!
+}
+
+type Author {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    street: String!
+    city: String!
+    state: String!
+    postalCode: String!
+    phone: String!
+    email: String!
+    books: [Book]
+}
+
+type Publisher {
+    id: ID!
+    name: String!
+    street: String!
+    city: String!
+    state: String!
+    postalCode: String!
+    phone: String!
+    email: String!
+    books: [Book]
+}
+
+type Mutation {
+    addBook(isbn: String, publishDate: String, authorId: ID, title: String, publisherId: ID, price: Float): Book
+    updateBook(id: ID, isbn: String, publishDate: String, authorId: ID, title: String, publisherId: ID, price: Float): Book
+    deleteBook(id: ID!): Boolean
+
+
+    addAuthor(firstName: String, lastName: String, street: String, city: String, state: String, postalCode: String, phone: String, email: String): Author
+    updateAuthor(id: ID, firstName: String, lastName: String, street: String, city: String, state: String, postalCode: String, phone: String, email: String): Author
+    deleteAuthor(id: ID!): Boolean
+
+    addPublisher(name: String, street: String, city: String, state: String, postalCode: String, phone: String, email: String): Publisher
+    updatePublisher(id: ID, name: String, street: String, city: String, state: String, postalCode: String, phone: String, email: String): Publisher
+    deletePublisher(id: ID!): Boolean
+}
+
+
+type Query {
+    books: [Book]!
+    authors: [Author]!
+    publishers: [Publisher]!
+
+    findBookById(id: ID): Book
+    findPublisherById(id: ID): Publisher
+    findAuthorById(id: ID): Author
+
+}
